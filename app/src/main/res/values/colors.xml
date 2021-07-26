@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#00FFC7</color>
+    <color name="colorPrimaryDark">#2C8370</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorTextHint">#792C8370</color>
+
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorDarkGreal">#2C8370</color>
+    <color name="colorGreal">#00FFC7</color>
+
+    <!--Text colors -->
+    <color name="colorBlueLink">#008EFF</color>
+    <color name="colorBlue">#226AA3</color>
+    <color name="colorRed">#9A0E1E</color>
+
+    <!--colors for Login Samples modern ui-->
+    <color name="whiteTextColor">#fff</color>
+    <color name="primaryTextColor">#00a5ff</color>
+    <color name="loginBkColor">#f0f0f0</color>
+
+    <!--colros for card-->
+    <color name="whiteCardColor">#fff</color>
+
+    <!--colors from sales app light mode-->
+    <color name="contentTextColor">#020000</color>
+</resources>

@@ -1,0 +1,81 @@
+<resources>
+    <string name="app_name">Coded Sales</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Strings used for Login Screen -->
+    <string name="btnPrint">Print</string>
+    <string name="btnPay">Pay</string>
+    <string name="btnClear">Clear</string>
+
+
+    <!-- Strings used for Login Screen -->
+    <string name="login">Sign in</string>
+    <string name="username">Enter your userid</string>
+    <string name="password">Enter your password</string>
+    <string name="forgot">Forgot Password?</string>
+    <string name="notuser">Don\'t have an account?</string>
+    <string name="orgcode">Enter your organization code</string>
+    <string name="register">Sign up</string>
+    <string name="hubney">A Product of Hubney</string>
+
+    <!-- Strings used for register Screen -->
+    <string name="email">Enter your email</string>
+    <string name="phone">Enter your phone number</string>
+    <string name="cpassword">Retype your password</string>
+    <string name="haveaccount">Have an account? </string>
+
+    <!-- Strings used for dashboard Screen -->
+    <string name="dashboard">My Dashoard</string>
+    <string name="exit">Exit</string>
+    <string name="profile">Profile</string>
+    <string name="sales">Sales</string>
+    <string name="stock">Stock</string>
+    <string name="settings">Settings</string>
+    <string name="history">History</string>
+
+    <!-- Strings used for StockMgt Screen -->
+    <string name="stockmgt">Stock Management</string>
+    <string name="addstock">Add Item</string>
+    <string name="removestock">Remove Item</string>
+    <string name="createstock">Create Item</string>
+    <string name="updatestock">Update Item</string>
+    <string name="searchstock">Search item</string>
+    <string name="viewstock">View Items</string>
+    <string name="stocklog">Log</string>
+
+    <!-- Strings used for sales dashboard Screen -->
+    <string name="thismonth">This Month</string>
+    <string name="thisweek">This Week</string>
+    <string name="weeklysalesamount">$2000</string>
+    <string name="monthlyamount">$9000</string>
+    <string name="dailysales">Today</string>
+    <string name="dailysalesamount">$900</string>
+
+    <!-- Strings used for card sales Screen -->
+    <string name="itemTitle">Item</string>
+    <string name="item">Indomie Super Pack</string>
+    <string name="itemPrice">Price</string>
+    <string name="itemAmount">$170</string>
+    <string name="itemQuantity">Quantity</string>
+    <string name="itemQuantityNo">6</string>
+    <string name="itemPriceAmount">$1000</string>
+
+    <!-- Strings used for card sales Screen -->
+    <string name="salescode">AE435BC192</string>
+    <string name="salesamount">$400</string>
+    <string name="salesdate">04-06-21 08:24 pm</string>
+
+    <!-- Strings used for card sales Screen -->
+    <string name="addItem">Add</string>
+    <string name="removeItem">Remove</string>
+    <string name="itemCode">Item ID:</string>
+
+    <!-- Strings used for card add Item Screen -->
+    <string name="code">34552211223635</string>
+    <string name="enterQuantity">Enter Quantity</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+
+
+</resources>

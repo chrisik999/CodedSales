@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RemoveStockActivity2">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHorizontal48"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.48" />
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHorizontal4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.04" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineVertical96"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.96" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineVertical4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.04" />
+
+    <View
+        android:layout_width="360dp"
+        android:layout_height="320dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/colorDarkGreal"
+        app:layout_constraintBottom_toTopOf="@id/guidelineHorizontal48"
+        app:layout_constraintEnd_toEndOf="@id/guidelineVertical96"
+        app:layout_constraintStart_toStartOf="@id/guidelineVertical4"
+        app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal4" />
+
+    <TextView
+        android:id="@+id/txtViewName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Name"
+        android:textColor="@color/colorDarkGreal"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/editTxtName"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVertical4"
+        app:layout_constraintTop_toTopOf="@+id/editTxtName" />
+    <EditText
+        android:id="@+id/editTxtName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontal48"
+        app:layout_constraintEnd_toEndOf="@+id/guidelineVertical96"
+        app:layout_constraintStart_toEndOf="@id/txtViewName"
+        android:inputType="textPersonName"
+        android:textSize="14sp"
+        />
+
+    <TextView
+        android:id="@+id/txtViewCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Code"
+        android:textColor="@color/colorDarkGreal"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/editTxtRemoveStockCode"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVertical4"
+        app:layout_constraintTop_toTopOf="@+id/editTxtRemoveStockCode"
+        app:layout_constraintVertical_bias="0.476" />
+
+    <EditText
+        android:id="@+id/editTxtRemoveStockCode"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="@+id/editTxtName"
+        app:layout_constraintTop_toBottomOf="@+id/editTxtName"
+        app:layout_constraintEnd_toEndOf="@id/editTxtName"
+        android:inputType="text"
+        android:textSize="14sp"
+        />
+
+
+
+    <TextView
+        android:id="@+id/txtViewMQty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Qty"
+        android:tooltipText="Enter item quantity"
+        android:textColor="@color/colorDarkGreal"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/editTxtAddMQty"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVertical4"
+        app:layout_constraintTop_toTopOf="@+id/editTxtAddMQty" />
+
+    <EditText
+        android:id="@+id/editTxtAddMQty"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:inputType="number"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/editTxtRemoveStockCode"
+        app:layout_constraintStart_toStartOf="@+id/editTxtRemoveStockCode"
+        app:layout_constraintTop_toBottomOf="@+id/editTxtRemoveStockCode" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@id/editTxtAddMQty"
+        app:layout_constraintStart_toStartOf="@id/txtViewMQty"
+        app:layout_constraintTop_toBottomOf="@+id/editTxtAddMQty">
+
+        <Button
+            android:id="@+id/btnRemoveStockCreate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="Remove"
+            android:textSize="16sp"
+            android:background="@color/colorDarkGreal"
+
+            />
+
+        <Button
+            android:id="@+id/btnRemoveStockClear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="Clear"
+            android:textSize="16sp"
+            android:background="@color/colorRed"
+            />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
