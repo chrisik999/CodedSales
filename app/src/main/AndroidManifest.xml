@@ -3,7 +3,7 @@
     package="com.example.codedsales">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UpdateItemActivity"></activity>
+        <activity android:name=".MakeSalesActivity"></activity>
+        <activity android:name=".SalesHistoryActivity" />
+        <activity android:name=".SalesActivity" />
+        <activity android:name=".InventoryManagementActivity" />
+        <activity android:name=".UpdateItemActivity" />
         <activity android:name=".DeleteItemActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".RemoveStockActivity2" />
