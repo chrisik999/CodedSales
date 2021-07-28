@@ -19,9 +19,10 @@
     <string name="hubney">A Product of Hubney</string>
 
     <!-- Strings used for register Screen -->
-    <string name="email">Enter your email</string>
-    <string name="phone">Enter your phone number</string>
-    <string name="cpassword">Retype your password</string>
+    <string name="email">Email Address</string>
+    <string name="phone">Phone Number</string>
+    <string name="rpassword">Password</string>
+    <string name="cpassword">Confirm Password</string>
     <string name="haveaccount">Have an account? </string>
 
     <!-- Strings used for dashboard Screen -->
@@ -76,6 +77,9 @@
     <string name="title_activity_sign_up">SignUpActivity</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+    <string name="business">Business</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
 
 
 </resources>

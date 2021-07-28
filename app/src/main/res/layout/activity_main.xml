@@ -7,23 +7,16 @@
     tools:context=".MainActivity">
 
     <TextView
+        style="@style/txtPageTitle"
         android:id="@+id/txtSignup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:text="@string/login"
-        android:textAlignment="center"
-        android:textColor="@color/colorDarkGreal"
-        android:textSize="24sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imgLogin"
-        android:layout_width="365dp"
-        android:layout_height="295dp"
+        android:layout_width="0dp"
+        android:layout_height="296dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -32,71 +25,59 @@
         app:srcCompat="@drawable/ic_login_amico" />
 
     <EditText
+        style="@style/mainEditTextBox"
         android:id="@+id/txtLoginPhone"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:drawableLeft="@android:drawable/stat_sys_phone_call"
         android:hint="@string/phone"
-        android:textAlignment="textStart"
-        android:textSize="18sp"
+        android:inputType="number"
+        android:maxLength="11"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgLogin" />
 
     <EditText
+        style="@style/mainEditTextBox"
         android:id="@+id/txtLoginPassword"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:drawableLeft="@android:drawable/ic_lock_lock"
         android:hint="@string/password"
-        android:textAlignment="textStart"
-        android:textSize="18sp"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="@id/txtLoginPhone"
         app:layout_constraintEnd_toEndOf="@id/txtLoginPhone"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@id/txtLoginPhone"
         app:layout_constraintTop_toBottomOf="@+id/txtLoginPhone" />
 
     <Button
+        style="@style/btnSign"
         android:id="@+id/btnSignin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/login_shape_bk"
         android:text="@string/login"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/txtLoginPassword"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/txtLoginPassword"
         app:layout_constraintTop_toBottomOf="@+id/txtLoginPassword" />
+
     <TextView
+        style="@style/txtSignQuestion"
         android:id="@+id/txtNoAccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintTop_toBottomOf="@+id/btnSignin"
         app:layout_constraintStart_toStartOf="@+id/txtLoginPassword"
         android:text="@string/notuser"
-        android:textStyle="bold"
-        android:textSize="16sp"
         />
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
+        style="@style/txtSignAnswer"
         app:layout_constraintTop_toTopOf="@id/txtNoAccount"
         app:layout_constraintBottom_toBottomOf="@id/txtNoAccount"
         app:layout_constraintStart_toEndOf="@+id/txtNoAccount"
-        android:textColor="@color/colorGreal"
         android:text="@string/register"
-        android:textStyle="bold"
-        android:textSize="16sp"
         />
+
+    <TextView
+        style="@style/txtFooter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

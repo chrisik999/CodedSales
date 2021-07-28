@@ -30,12 +30,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_stock);
+        setContentView(R.layout.activity_sign_up);
         context = this;
 
-        if(getSupportActionBar() != null){
-            getSupportActionBar().hide();
-       }
+//        if(getSupportActionBar() != null){
+//            getSupportActionBar().hide();
+//       }
     }
 
     //<editor-fold defaultstate="collapsed" desc="Validate Inputs">

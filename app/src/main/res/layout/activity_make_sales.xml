@@ -6,70 +6,91 @@
     android:layout_height="match_parent"
     tools:context=".MakeSalesActivity">
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <RelativeLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/headerLayout"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
                 android:background="@drawable/reports_header_bk">
 
                 <ImageView
                     android:id="@+id/imageView6"
-                    android:layout_width="204dp"
-                    android:layout_height="128dp"
-                    android:layout_centerInParent="true"
-                    tools:srcCompat="@drawable/ic_app_installation_pana" />
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    app:layout_constraintStart_toStartOf="@id/headerLayout"
+                    app:layout_constraintEnd_toEndOf="@id/headerLayout"
+                    app:layout_constraintTop_toTopOf="@+id/headerLayout"
+                    app:layout_constraintBottom_toBottomOf="@id/headerLayout"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintVertical_bias="0.5"
+                    tools:srcCompat="@drawable/ic_spreadsheets_amico" />
 
-            </RelativeLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
                 android:id="@+id/linear_sales_layout"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/headerLayout">
-
-                <include layout="@layout/card_main_sales" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linear_sales_layout_1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/linear_sales_layout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/headerLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
                 android:layout_marginTop="8dp"
-                android:orientation="vertical">
-
-                <include layout="@layout/card_sales" />
-
-                <include layout="@layout/card_sales" />
-
-                <include layout="@layout/card_sales" />
+                >
+                <include layout="@layout/card_main_sales" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/linear_sales_layout_1"
-                android:layout_marginTop="4dp"
-                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ScrollLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintBottom_toBottomOf="parent"
                 android:orientation="vertical">
-
                 <include layout="@layout/card_pay_button" />
             </LinearLayout>
 
-        </RelativeLayout>
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/ScrollLayout"
+        android:layout_width="0dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear_sales_layout">
+
+        <LinearLayout
+            android:id="@+id/linear_sales_layout_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical">
+
+            <include layout="@layout/card_sales" />
+
+            <include layout="@layout/card_sales" />
+
+            <include layout="@layout/card_sales" />
+
+            <include layout="@layout/card_sales" />
+
+            <include layout="@layout/card_sales" />
+
+            <include layout="@layout/card_sales" />
+
+            <include layout="@layout/card_sales" />
+
+            <include layout="@layout/card_sales" />
+
+            <include layout="@layout/card_sales" />
+        </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 
