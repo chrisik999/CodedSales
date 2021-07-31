@@ -27,6 +27,7 @@ public class SignUpActivity extends AppCompatActivity {
     OkHttpClient client;
     JSONObject jo;
     User user;
+    String msg="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +37,30 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
-    public String validateInputs(String firstname){
-        return "Hello";
+    public String validateInputs(String firsname, String lasname, String emal, String pone, String busines, String pasword, String cpasword){
+        String firstname = firsname.trim(); String lastname = lasname.trim(); String email = emal.trim(); String phone = pone.trim(); String business = busines.trim(); String password = pasword.trim(); String cpassword = cpasword;
+        if(firstname.isEmpty() || lastname.isEmpty() || email.isEmpty() || phone.isEmpty() || business.isEmpty() || password.isEmpty()){
+            return "empty";
+        }
+        else if(firstname.length()<3 || lastname.length()<3 || email.length()<3 || phone.length()<3 || business.length()<3 || password.length()<= 4){
+            return  "length";
+        }
+        else if(!email.contains("@") && !email.contains(".")){
+            return "email not valid";
+        }
+        else if(phone.length() != 11){
+            return "phone not valid";
+        }
+        else if(business.length() != 12){
+            return "incorrect business";
+        }
+        else if (password.equals( cpassword)){
+            return "mismatch";
+        }
+        else{
+            return "Hello";
+        }
+
     }
 
     //<editor-fold defaultstate= "collapsed" desc= "Get Api Object">

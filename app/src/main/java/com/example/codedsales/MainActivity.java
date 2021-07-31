@@ -5,6 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.codedsales.models.User;
@@ -30,12 +34,46 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.activity_main);
         context = this;
 
-//        if(getSupportActionBar() != null){
-//            getSupportActionBar().hide();
-//       }
+        if(getSupportActionBar() != null){
+            getSupportActionBar().hide();
+       }
+        EditText txtPhone = findViewById(R.id.txtLoginPhone);
+        EditText txtPass = findViewById(R.id.txtLoginPassword);
+        Button btnLogin =  findViewById(R.id.btnSignin);
+        TextView txtRegister = findViewById(R.id.txtLoginRegister);
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String phone = txtPhone.getText().toString();
+                String password = txtPass.getText().toString();
+                String checkRes = checkInputs(phone, password);
+                switch(checkRes){
+                    case "empty":
+                        Toast.makeText(context,"", Toast.LENGTH_SHORT);
+                        break;
+                    case "not phone":
+                        Toast.makeText(context,"", Toast.LENGTH_SHORT);
+                        break;
+                    case "short password":
+                        Toast.makeText(context,"", Toast.LENGTH_SHORT);
+                        break;
+                    case "valid":
+                        String pv[] = new String[2];
+                        pv[1] = password;
+                        pv[0] = phone;
+                        getAPIObject("login",pv);
+                        break;
+                    default:
+                        Toast.makeText(context,"", Toast.LENGTH_SHORT);
+                        break;
+                }
+            }
+        });
+
     }
 
     //<editor-fold defaultstate="collapsed" desc="Validate Inputs">
