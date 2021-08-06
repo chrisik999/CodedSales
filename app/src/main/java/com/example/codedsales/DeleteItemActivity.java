@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.codedsales.models.Item;
+import com.google.gson.Gson;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -37,17 +40,20 @@ public class DeleteItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete_item);
         context = this;
-
         Bundle data = getIntent().getExtras();
         String [] userData = data.getStringArray("user");
-        //txtName = findViewById(R.id.TxtName);
-        //txtCode = findViewById(R.id.TxtItemCode);
+        txtName = findViewById(R.id.TxtName);
+        txtCode = findViewById(R.id.TxtItemCode);
 
         btnRemove = findViewById(R.id.btnRemoveItem);
         btnClear = findViewById(R.id.btnClear);
+
+        String [] qv ={"76853212", userData[2]};
+        getAPIObject("getitem",qv);
+
         btnRemove.setOnClickListener(view -> {
             Log.i("loggy", "btnRemove called");
-           String code = "218649998";//txtCode.getText().toString();
+           String code = txtCode.getText().toString();
            String [] pv = {code,userData[2], userData[1]};
            getAPIObject("deleteitems",pv);
 
@@ -55,9 +61,7 @@ public class DeleteItemActivity extends AppCompatActivity {
 
         btnClear.setOnClickListener(view -> {
             Log.i("loggy", "btnClear called");
-
-            txtName.setText("");
-            txtCode.setText("");
+            clearText();
         });
     }
 
@@ -88,6 +92,29 @@ public class DeleteItemActivity extends AppCompatActivity {
                             String type = jo.getString("type");
                             switch (type.toLowerCase()){
                                 case "success":
+                                case "false":
+                                case "failed":
+                                case "failure":
+                                    msg = jo.getString("msg");
+                                    clearText();
+                                    Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+                                    break;
+                                default:
+                                    clearText();
+                                    Toast.makeText(context, "Moku!!! Oh!!!!", Toast.LENGTH_SHORT).show();
+                                    break;
+                            }
+                        }else if(endpoint.equals("getitem")){
+                            String msg;
+                            String type = jo.getString("type");
+                            switch (type.toLowerCase()){
+                                case "success":
+                                    Gson gson = new Gson();
+                                    String us = jo.getString("item");
+                                    Item item = gson.fromJson(us, Item.class);
+                                    txtName.setText(item.getName());
+                                    txtCode.setText(item.getCode());
+                                    break;
                                 case "false":
                                 case "failed":
                                 case "failure":
@@ -124,5 +151,8 @@ public class DeleteItemActivity extends AppCompatActivity {
     }
     //</editor-fold>
 
-
+    void clearText(){
+        txtName.setText("");
+        txtCode.setText("");
+    }
 }

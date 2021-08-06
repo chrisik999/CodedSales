@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.codedsales.models.Item;
+import com.google.gson.Gson;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -43,13 +46,14 @@ public class AddStockActivity extends AppCompatActivity {
         Button btnAdd = findViewById(R.id.btnAdd);
         Button btnClear = findViewById(R.id.btnClear);
 
+        String [] qv ={"76853212", userData[2]};
+        getAPIObject("getitem",qv);
+
         btnAdd.setOnClickListener(view -> {
             context = view.getContext();
             Log.i("logg", "btnAdd called");
-            //String name = txtName.getText().toString();
-            String name = "vvv";
-            String code = "154WEQT7";
-            //String code = txtCode.getText().toString();
+            String name = txtName.getText().toString();
+            String code = txtCode.getText().toString();
             String qty = txtQty.getText().toString();
             String phone = userData[1];
             String business = userData[2];
@@ -78,9 +82,7 @@ public class AddStockActivity extends AppCompatActivity {
 
         btnClear.setOnClickListener(view -> {
             Log.i("logg", "btnClear called");
-            txtName.setText("");
-            txtCode.setText("");
-            txtQty.setText("");
+            clearText();
         });
 
     }
@@ -135,6 +137,29 @@ public class AddStockActivity extends AppCompatActivity {
                                 case "failed":
                                 case "failure":
                                     msg = jo.getString("msg");
+                                    clearText();
+                                    Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+                                    break;
+                                default:
+                                    clearText();
+                                    Toast.makeText(context, "Moku!!! Oh!!!!", Toast.LENGTH_SHORT).show();
+                                    break;
+                            }
+                        }else if(endpoint.equals("getitem")){
+                            String msg;
+                            String type = jo.getString("type");
+                            switch (type.toLowerCase()){
+                                case "success":
+                                    Gson gson = new Gson();
+                                    String us = jo.getString("item");
+                                    Item item = gson.fromJson(us, Item.class);
+                                    txtName.setText(item.getName());
+                                    txtCode.setText(item.getCode());
+                                    break;
+                                case "false":
+                                case "failed":
+                                case "failure":
+                                    msg = jo.getString("msg");
                                     Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
                                     break;
                                 default:
@@ -166,5 +191,11 @@ public class AddStockActivity extends AppCompatActivity {
         return request;
     }
     //</editor-fold>
+
+    void clearText(){
+        txtName.setText("");
+        txtCode.setText("");
+        txtQty.setText("");
+    }
 
 }

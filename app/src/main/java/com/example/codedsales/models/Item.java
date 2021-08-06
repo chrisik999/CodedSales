@@ -123,6 +123,15 @@ public class Item implements Serializable {
     public void setAmount(Double amount) {
         this.amount = getQuantity() * getPrice();
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="To String Method">

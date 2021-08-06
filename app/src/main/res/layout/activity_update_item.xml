@@ -69,7 +69,6 @@
         app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontal48"
         app:layout_constraintEnd_toEndOf="@+id/guidelineVertical96"
         app:layout_constraintStart_toEndOf="@id/txtViewName"
-        android:enabled="false"
         android:hint="Enter new Name"
         android:inputType="textPersonName"
         android:maxLength="30"
@@ -120,7 +119,7 @@
         android:id="@+id/TxtDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:inputType="date"
+        android:inputType="textPersonName"
         android:textSize="14sp"
         android:hint="Enter Item's Description"
         android:layout_marginTop="16dp"
@@ -163,19 +162,19 @@
         app:layout_constraintTop_toBottomOf="@+id/TxtPrice">
 
         <Button
-            android:id="@+id/btnCreateItem"
+            android:id="@+id/btnUpdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
-            android:text="Add"
+            android:text="Update"
             android:textSize="16sp"
             android:background="@color/colorDarkGreal"
 
             />
 
         <Button
-            android:id="@+id/createItemBtnClear"
+            android:id="@+id/btnClear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

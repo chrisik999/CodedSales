@@ -20,6 +20,7 @@ public class InventoryActivity extends AppCompatActivity {
     CardView updateItemCard;
     CardView viewItemCard;
     CardView removeItemCard;
+    CardView removeStockCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,13 @@ public class InventoryActivity extends AppCompatActivity {
         removeItemCard = findViewById(R.id.removeItemCard);
         removeItemCard.setOnClickListener(view -> {
             intent = new Intent(InventoryActivity.this, DeleteItemActivity.class);
+            intent.putExtra("user", userData);
+            startActivity(intent);
+        });
+
+        removeStockCard = findViewById(R.id.removeStockCard);
+        removeStockCard.setOnClickListener(view -> {
+            intent = new Intent(InventoryActivity.this, RemoveStockActivity2.class);
             intent.putExtra("user", userData);
             startActivity(intent);
         });

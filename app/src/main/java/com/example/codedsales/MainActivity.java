@@ -30,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
     OkHttpClient client;
     JSONObject jo;
     User user;
-    String [] data = new String [3];
+    EditText txtPhone;
+    EditText txtPass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
         if(getSupportActionBar() != null){
             getSupportActionBar().hide();
        }
-        EditText txtPhone = findViewById(R.id.txtLoginPhone);
-        EditText txtPass = findViewById(R.id.txtLoginPassword);
+        txtPhone = findViewById(R.id.txtLoginPhone);
+        txtPass = findViewById(R.id.txtLoginPassword);
         Button btnLogin =  findViewById(R.id.btnSignin);
         TextView txtRegister = findViewById(R.id.txtLoginRegister);
 
@@ -66,8 +67,6 @@ public class MainActivity extends AppCompatActivity {
                         String pv[] = new String[2];
                         pv[1] = password;
                         pv[0] = phone;
-                        txtPhone.setText("");
-                        txtPass.setText("");
                         getAPIObject("login",pv);
                         break;
                     default:
@@ -132,19 +131,23 @@ public class MainActivity extends AppCompatActivity {
                                     Gson gson = new Gson();
                                     String us = jo.getString("user");
                                     user = gson.fromJson(us, User.class);
+                                    String [] data = new String [3];
                                     Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
                                     data[1] = user.getPhone();
                                     data[0] = user.getFirstName();
                                     data[2] = user.getBusiness();
                                     intent.putExtra("user", data);
+                                    clearText();
                                     startActivity(intent);
                                     break;
                                 case "false":
                                 case "failed":
                                     msg = jo.getString("msg");
+                                    clearText();
                                     Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
                                     break;
                                 default:
+                                    clearText();
                                     Toast.makeText(context, "Unknown Error.", Toast.LENGTH_SHORT).show();
                                     break;
                             }
@@ -172,5 +175,10 @@ public class MainActivity extends AppCompatActivity {
         return request;
     }
     //</editor-fold>
+
+    public void clearText(){
+        txtPhone.setText("");
+        txtPass.setText("");
+    }
 
 }
