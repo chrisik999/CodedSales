@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     OkHttpClient client;
     JSONObject jo;
     User user;
+    String [] data = new String [3];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
                         String pv[] = new String[2];
                         pv[1] = password;
                         pv[0] = phone;
+                        txtPhone.setText("");
+                        txtPass.setText("");
                         getAPIObject("login",pv);
                         break;
                     default:
@@ -124,12 +127,16 @@ public class MainActivity extends AppCompatActivity {
                         if(endpoint.equals("login")){
                             String msg;
                             String type = jo.getString("type");
-                            switch (type){
+                            switch (type.toLowerCase()){
                                 case "success":
                                     Gson gson = new Gson();
                                     String us = jo.getString("user");
                                     user = gson.fromJson(us, User.class);
                                     Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
+                                    data[1] = user.getPhone();
+                                    data[0] = user.getFirstName();
+                                    data[2] = user.getBusiness();
+                                    intent.putExtra("user", data);
                                     startActivity(intent);
                                     break;
                                 case "false":

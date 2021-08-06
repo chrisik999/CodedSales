@@ -60,7 +60,6 @@ public class SignUpActivity extends AppCompatActivity {
         else{
             return "Hello";
         }
-
     }
 
     //<editor-fold defaultstate= "collapsed" desc= "Get Api Object">
