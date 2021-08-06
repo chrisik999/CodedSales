@@ -55,19 +55,19 @@
         android:text="Name"
         android:textColor="@color/colorDarkGreal"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTxtName"
+        app:layout_constraintBottom_toBottomOf="@+id/TxtName"
         app:layout_constraintStart_toStartOf="@+id/guidelineVertical4"
-        app:layout_constraintTop_toTopOf="@+id/editTxtName" />
+        app:layout_constraintTop_toTopOf="@+id/TxtName" />
 
     <EditText
-        android:id="@+id/editTxtName"
+        android:id="@+id/TxtName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:inputType="textPersonName"
-        android:textSize="14sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/guidelineVertical96"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@id/txtViewName"
@@ -81,21 +81,21 @@
         android:text="Code"
         android:textColor="@color/colorDarkGreal"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTxtRemoveStockCode"
+        app:layout_constraintBottom_toBottomOf="@+id/TxtItemCode"
         app:layout_constraintStart_toStartOf="@+id/guidelineVertical4"
-        app:layout_constraintTop_toTopOf="@+id/editTxtRemoveStockCode"
+        app:layout_constraintTop_toTopOf="@+id/TxtItemCode"
         app:layout_constraintVertical_bias="0.476" />
 
     <EditText
-        android:id="@+id/editTxtRemoveStockCode"
+        android:id="@+id/TxtItemCode"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        app:layout_constraintStart_toStartOf="@+id/editTxtName"
-        app:layout_constraintTop_toBottomOf="@+id/editTxtName"
-        app:layout_constraintEnd_toEndOf="@id/editTxtName"
+        app:layout_constraintStart_toStartOf="@+id/TxtName"
+        app:layout_constraintTop_toBottomOf="@+id/TxtName"
+        app:layout_constraintEnd_toEndOf="@id/TxtName"
         android:inputType="text"
-        android:textSize="14sp"
+        android:textSize="18sp"
         />
 
     <LinearLayout
@@ -103,30 +103,30 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@id/editTxtRemoveStockCode"
+        app:layout_constraintEnd_toEndOf="@id/TxtItemCode"
         app:layout_constraintStart_toStartOf="@id/txtViewCode"
-        app:layout_constraintTop_toBottomOf="@+id/editTxtRemoveStockCode">
+        app:layout_constraintTop_toBottomOf="@+id/TxtItemCode">
 
         <Button
-            android:id="@+id/btnRemoveStockCreate"
+            android:id="@+id/btnRemoveItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
             android:text="Delete"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:background="@color/colorDarkGreal"
 
             />
 
         <Button
-            android:id="@+id/btnRemoveStockClear"
+            android:id="@+id/btnClear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginStart="8dp"
             android:text="Clear"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:background="@color/colorRed"
             />
 

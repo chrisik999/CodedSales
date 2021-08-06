@@ -56,11 +56,11 @@
         android:text="Name"
         android:textColor="@color/colorDarkGreal"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTxtName"
+        app:layout_constraintBottom_toBottomOf="@+id/TxtName"
         app:layout_constraintStart_toStartOf="@+id/guidelineVertical4"
-        app:layout_constraintTop_toTopOf="@+id/editTxtName" />
+        app:layout_constraintTop_toTopOf="@+id/TxtName" />
     <EditText
-        android:id="@+id/editTxtName"
+        android:id="@+id/TxtName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -70,6 +70,7 @@
         app:layout_constraintEnd_toEndOf="@+id/guidelineVertical96"
         app:layout_constraintStart_toEndOf="@id/txtViewName"
         android:enabled="false"
+        android:hint="Enter new Name"
         android:inputType="textPersonName"
         android:maxLength="30"
         android:textSize="14sp"
@@ -83,19 +84,19 @@
         android:text="Code"
         android:textColor="@color/colorDarkGreal"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTxtRemoveStockCode"
+        app:layout_constraintBottom_toBottomOf="@+id/TxtItemCode"
         app:layout_constraintStart_toStartOf="@+id/guidelineVertical4"
-        app:layout_constraintTop_toTopOf="@+id/editTxtRemoveStockCode"
+        app:layout_constraintTop_toTopOf="@+id/TxtItemCode"
         app:layout_constraintVertical_bias="0.476" />
 
     <EditText
-        android:id="@+id/editTxtRemoveStockCode"
+        android:id="@+id/TxtItemCode"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@+id/editTxtName"
-        app:layout_constraintTop_toBottomOf="@+id/editTxtName"
-        app:layout_constraintEnd_toEndOf="@id/editTxtName"
+        app:layout_constraintStart_toStartOf="@+id/TxtName"
+        app:layout_constraintTop_toBottomOf="@+id/TxtName"
+        app:layout_constraintEnd_toEndOf="@id/TxtName"
         android:enabled="false"
         android:inputType="text"
         android:maxLength="12"
@@ -107,47 +108,47 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="EDate"
-        android:tooltipText="Expiry Date"
+        android:text="Desc"
+        android:tooltipText="Description"
         android:textColor="@color/colorDarkGreal"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTxtDescription"
+        app:layout_constraintBottom_toBottomOf="@+id/TxtDescription"
         app:layout_constraintStart_toStartOf="@+id/guidelineVertical4"
-        app:layout_constraintTop_toTopOf="@+id/editTxtDescription" />
+        app:layout_constraintTop_toTopOf="@+id/TxtDescription" />
 
     <EditText
-        android:id="@+id/editTxtDescription"
+        android:id="@+id/TxtDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:inputType="date"
         android:textSize="14sp"
-        android:hint="Enter Item Expiry Date"
+        android:hint="Enter Item's Description"
         android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/editTxtRemoveStockCode"
-        app:layout_constraintTop_toBottomOf="@+id/editTxtRemoveStockCode"
-        app:layout_constraintStart_toStartOf="@+id/editTxtRemoveStockCode" />
+        app:layout_constraintEnd_toEndOf="@+id/TxtItemCode"
+        app:layout_constraintTop_toBottomOf="@+id/TxtItemCode"
+        app:layout_constraintStart_toStartOf="@+id/TxtItemCode" />
 
     <TextView
         android:id="@+id/txtViewQty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="Qty"
-        android:tooltipText="Enter item quantity"
+        android:text="Price"
+        android:tooltipText="Enter New Price"
         android:textColor="@color/colorDarkGreal"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTxtAddMQty"
+        app:layout_constraintBottom_toBottomOf="@+id/TxtPrice"
         app:layout_constraintStart_toStartOf="@+id/guidelineVertical4"
-        app:layout_constraintTop_toTopOf="@+id/editTxtAddMQty" />
+        app:layout_constraintTop_toTopOf="@+id/TxtPrice" />
     <EditText
-        android:id="@+id/editTxtAddMQty"
+        android:id="@+id/TxtPrice"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@+id/editTxtDescription"
-        app:layout_constraintTop_toBottomOf="@+id/editTxtDescription"
-        app:layout_constraintEnd_toEndOf="@id/editTxtDescription"
-        android:hint="Enter Item Quantity"
+        app:layout_constraintStart_toStartOf="@+id/TxtDescription"
+        app:layout_constraintTop_toBottomOf="@+id/TxtDescription"
+        app:layout_constraintEnd_toEndOf="@id/TxtDescription"
+        android:hint="Enter Item's Price"
         android:inputType="number"
         android:textSize="14sp"
         />
@@ -157,12 +158,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@id/editTxtAddMQty"
+        app:layout_constraintEnd_toEndOf="@id/TxtPrice"
         app:layout_constraintStart_toStartOf="@id/txtViewQty"
-        app:layout_constraintTop_toBottomOf="@+id/editTxtAddMQty">
+        app:layout_constraintTop_toBottomOf="@+id/TxtPrice">
 
         <Button
-            android:id="@+id/btnCreate"
+            android:id="@+id/btnCreateItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -174,7 +175,7 @@
             />
 
         <Button
-            android:id="@+id/btnClear"
+            android:id="@+id/createItemBtnClear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".CreateItemActivity">
 
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineHorizontal48"
         android:layout_width="wrap_content"
@@ -56,11 +55,11 @@
         android:text="Name"
         android:textColor="@color/colorDarkGreal"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTxtName"
+        app:layout_constraintBottom_toBottomOf="@+id/createItemTxtName"
         app:layout_constraintStart_toStartOf="@+id/guidelineVertical4"
-        app:layout_constraintTop_toTopOf="@+id/editTxtName" />
+        app:layout_constraintTop_toTopOf="@+id/createItemTxtName" />
     <EditText
-        android:id="@+id/editTxtName"
+        android:id="@+id/createItemTxtName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -69,9 +68,9 @@
         app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontal48"
         app:layout_constraintEnd_toEndOf="@+id/guidelineVertical96"
         app:layout_constraintStart_toEndOf="@id/txtViewName"
-        android:hint="Enter Item Name"
+        android:hint="@string/name_of_item"
         android:inputType="textPersonName"
-        android:textSize="14sp"
+        android:textSize="18sp"
         />
 
     <TextView
@@ -82,22 +81,23 @@
         android:text="Code"
         android:textColor="@color/colorDarkGreal"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTxtRemoveStockCode"
+        app:layout_constraintBottom_toBottomOf="@+id/createItemTxtStockCode"
         app:layout_constraintStart_toStartOf="@+id/guidelineVertical4"
-        app:layout_constraintTop_toTopOf="@+id/editTxtRemoveStockCode"
+        app:layout_constraintTop_toTopOf="@+id/createItemTxtStockCode"
         app:layout_constraintVertical_bias="0.476" />
 
     <EditText
-        android:id="@+id/editTxtRemoveStockCode"
+        android:id="@+id/createItemTxtStockCode"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/editTxtName"
-        app:layout_constraintTop_toBottomOf="@+id/editTxtName"
-        app:layout_constraintEnd_toEndOf="@id/editTxtName"
+        android:hint="Item code"
+        app:layout_constraintStart_toStartOf="@+id/createItemTxtName"
+        app:layout_constraintTop_toBottomOf="@+id/createItemTxtName"
+        app:layout_constraintEnd_toEndOf="@id/createItemTxtName"
         android:inputType="text"
         android:enabled="false"
-        android:textSize="14sp"
+        android:textSize="18sp"
         />
 
     <TextView
@@ -108,20 +108,20 @@
         android:text="Price"
         android:textColor="@color/colorDarkGreal"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTxtPrice"
+        app:layout_constraintBottom_toBottomOf="@+id/createItemTxtPrice"
         app:layout_constraintStart_toStartOf="@+id/guidelineVertical4"
-        app:layout_constraintTop_toTopOf="@+id/editTxtPrice" />
+        app:layout_constraintTop_toTopOf="@+id/createItemTxtPrice" />
     <EditText
-        android:id="@+id/editTxtPrice"
+        android:id="@+id/createItemTxtPrice"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/editTxtRemoveStockCode"
-        app:layout_constraintTop_toBottomOf="@+id/editTxtRemoveStockCode"
-        app:layout_constraintEnd_toEndOf="@id/editTxtRemoveStockCode"
-        android:hint="Enter Item Price"
+        app:layout_constraintStart_toStartOf="@+id/createItemTxtStockCode"
+        app:layout_constraintTop_toBottomOf="@+id/createItemTxtStockCode"
+        app:layout_constraintEnd_toEndOf="@id/createItemTxtStockCode"
+        android:hint="Enter item price"
         android:inputType="number"
-        android:textSize="14sp"
+        android:textSize="18sp"
         />
 
     <TextView
@@ -132,20 +132,22 @@
         android:text="Desc"
         android:textColor="@color/colorDarkGreal"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTxtDescription"
+        app:layout_constraintBottom_toBottomOf="@+id/createItemTxtDescription"
         app:layout_constraintStart_toStartOf="@+id/guidelineVertical4"
-        app:layout_constraintTop_toTopOf="@+id/editTxtDescription" />
+        app:layout_constraintTop_toTopOf="@+id/createItemTxtDescription" />
+
     <EditText
-        android:id="@+id/editTxtDescription"
+        android:id="@+id/createItemTxtDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/editTxtPrice"
-        app:layout_constraintTop_toBottomOf="@+id/editTxtPrice"
-        app:layout_constraintEnd_toEndOf="@id/editTxtPrice"
         android:inputType="text"
-        android:textSize="14sp"
-        />
+        android:textSize="18sp"
+        android:hint="Enter item description"
+        app:layout_constraintEnd_toEndOf="@id/createItemTxtPrice"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/createItemTxtPrice"
+        app:layout_constraintTop_toBottomOf="@+id/createItemTxtPrice" />
 
     <TextView
         android:id="@+id/txtViewMQty"
@@ -155,19 +157,21 @@
         android:text="MQty"
         android:textColor="@color/colorDarkGreal"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTxtAddMQty"
+        android:hint=""
+        app:layout_constraintBottom_toBottomOf="@+id/createItemTxtAddMQty"
         app:layout_constraintStart_toStartOf="@+id/guidelineVertical4"
-        app:layout_constraintTop_toTopOf="@+id/editTxtAddMQty" />
+        app:layout_constraintTop_toTopOf="@+id/createItemTxtAddMQty" />
     <EditText
-        android:id="@+id/editTxtAddMQty"
+        android:id="@+id/createItemTxtAddMQty"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/editTxtDescription"
-        app:layout_constraintTop_toBottomOf="@+id/editTxtDescription"
-        app:layout_constraintEnd_toEndOf="@id/editTxtDescription"
+        android:hint="Enter minimum quantity"
+        app:layout_constraintStart_toStartOf="@+id/createItemTxtDescription"
+        app:layout_constraintTop_toBottomOf="@+id/createItemTxtDescription"
+        app:layout_constraintEnd_toEndOf="@id/createItemTxtDescription"
         android:inputType="number"
-        android:textSize="14sp"
+        android:textSize="18sp"
         />
 
     <LinearLayout
@@ -175,12 +179,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@id/editTxtAddMQty"
+        app:layout_constraintEnd_toEndOf="@id/createItemTxtAddMQty"
         app:layout_constraintStart_toStartOf="@id/txtViewMQty"
-        app:layout_constraintTop_toBottomOf="@+id/editTxtAddMQty">
+        app:layout_constraintTop_toBottomOf="@+id/createItemTxtAddMQty">
 
         <Button
-            android:id="@+id/btnCreate"
+            android:id="@+id/btnCreateItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -188,11 +192,10 @@
             android:text="Create"
             android:textSize="16sp"
             android:background="@color/colorDarkGreal"
-
             />
 
         <Button
-            android:id="@+id/btnClear"
+            android:id="@+id/createItemBtnClear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -201,7 +204,6 @@
             android:textSize="16sp"
             android:background="@color/colorRed"
             />
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

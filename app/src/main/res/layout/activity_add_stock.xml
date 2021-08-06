@@ -55,14 +55,14 @@
         android:text="Name"
         android:textColor="@color/colorDarkGreal"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTxtName"
+        app:layout_constraintBottom_toBottomOf="@+id/TxtName"
         app:layout_constraintStart_toStartOf="@+id/guidelineVertical4"
-        app:layout_constraintTop_toTopOf="@+id/editTxtName" />
+        app:layout_constraintTop_toTopOf="@+id/TxtName" />
     <EditText
-        android:id="@+id/editTxtName"
+        android:id="@+id/TxtName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontal48"
@@ -82,19 +82,19 @@
         android:text="Code"
         android:textColor="@color/colorDarkGreal"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTxtRemoveStockCode"
+        app:layout_constraintBottom_toBottomOf="@+id/TxtStockCode"
         app:layout_constraintStart_toStartOf="@+id/guidelineVertical4"
-        app:layout_constraintTop_toTopOf="@+id/editTxtRemoveStockCode"
+        app:layout_constraintTop_toTopOf="@+id/TxtStockCode"
         app:layout_constraintVertical_bias="0.476" />
 
     <EditText
-        android:id="@+id/editTxtRemoveStockCode"
+        android:id="@+id/TxtStockCode"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@+id/editTxtName"
-        app:layout_constraintTop_toBottomOf="@+id/editTxtName"
-        app:layout_constraintEnd_toEndOf="@id/editTxtName"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="@+id/TxtName"
+        app:layout_constraintTop_toBottomOf="@+id/TxtName"
+        app:layout_constraintEnd_toEndOf="@id/TxtName"
         android:enabled="false"
         android:inputType="text"
         android:maxLength="12"
@@ -102,7 +102,7 @@
         />
 
     <TextView
-        android:id="@+id/txtViewDescription"
+        android:id="@+id/txtViewExpDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -110,21 +110,26 @@
         android:tooltipText="Expiry Date"
         android:textColor="@color/colorDarkGreal"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTxtDescription"
+        android:enabled="false"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/TxtExpDate"
         app:layout_constraintStart_toStartOf="@+id/guidelineVertical4"
-        app:layout_constraintTop_toTopOf="@+id/editTxtDescription" />
+        app:layout_constraintTop_toTopOf="@+id/TxtExpDate" />
 
     <EditText
-        android:id="@+id/editTxtDescription"
+        android:id="@+id/TxtExpDate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:inputType="date"
         android:textSize="14sp"
         android:hint="Enter Item Expiry Date"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/editTxtRemoveStockCode"
-        app:layout_constraintTop_toBottomOf="@+id/editTxtRemoveStockCode"
-        app:layout_constraintStart_toStartOf="@+id/editTxtRemoveStockCode" />
+        android:layout_marginTop="72dp"
+        app:layout_constraintEnd_toEndOf="@+id/TxtQty"
+        app:layout_constraintTop_toBottomOf="@+id/TxtQty"
+        app:layout_constraintStart_toStartOf="@+id/TxtQty"
+        android:enabled="false"
+        android:visibility="invisible"
+        />
 
     <TextView
         android:id="@+id/txtViewQty"
@@ -135,17 +140,17 @@
         android:tooltipText="Enter item quantity"
         android:textColor="@color/colorDarkGreal"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTxtAddMQty"
+        app:layout_constraintBottom_toBottomOf="@+id/TxtQty"
         app:layout_constraintStart_toStartOf="@+id/guidelineVertical4"
-        app:layout_constraintTop_toTopOf="@+id/editTxtAddMQty" />
+        app:layout_constraintTop_toTopOf="@+id/TxtQty" />
     <EditText
-        android:id="@+id/editTxtAddMQty"
+        android:id="@+id/TxtQty"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@+id/editTxtDescription"
-        app:layout_constraintTop_toBottomOf="@+id/editTxtDescription"
-        app:layout_constraintEnd_toEndOf="@id/editTxtDescription"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="@+id/TxtStockCode"
+        app:layout_constraintTop_toBottomOf="@+id/TxtStockCode"
+        app:layout_constraintEnd_toEndOf="@id/TxtStockCode"
         android:hint="Enter Item Quantity"
         android:inputType="number"
         android:textSize="14sp"
@@ -154,14 +159,14 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@id/editTxtAddMQty"
+        app:layout_constraintEnd_toEndOf="@id/TxtQty"
         app:layout_constraintStart_toStartOf="@id/txtViewQty"
-        app:layout_constraintTop_toBottomOf="@+id/editTxtAddMQty">
+        app:layout_constraintTop_toBottomOf="@+id/TxtQty">
 
         <Button
-            android:id="@+id/btnCreate"
+            android:id="@+id/btnAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

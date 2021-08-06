@@ -9,27 +9,24 @@
     tools:context=".DashboardActivity">
 
     <TextView
-        android:id="@+id/txtStockMgt"
-        android:layout_width="wrap_content"
+        android:id="@+id/txtDashboard"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="210dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
         android:text="@string/dashboard"
         android:textColor="@color/colorDarkGreal"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/txtStockMgt"
-        android:layout_marginTop="20dp"
-        android:layout_margin="20dp"
+        android:layout_below="@+id/txtDashboard"
+        android:layout_margin="16dp"
         android:columnCount="2"
         android:rowCount="3" >
 
@@ -143,6 +140,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/profileCard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
@@ -180,6 +178,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/settingsCard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
@@ -215,6 +214,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/exitCard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
