@@ -36,16 +36,37 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.04" />
 
-    <View
-        android:layout_width="360dp"
-        android:layout_height="320dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@color/colorDarkGreal"
+    <SurfaceView
+        android:id="@+id/surfaceView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/guidelineHorizontal48"
         app:layout_constraintEnd_toEndOf="@id/guidelineVertical96"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/guidelineVertical4"
-        app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal4" />
+        app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal4"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/txtBarcodeValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal4"
+        app:layout_constraintStart_toStartOf="@id/guidelineVertical4"
+        android:layout_marginStart="8dp"
+        android:text="No BarCode Detected"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/guidelineVertical96"
+        app:layout_constraintBottom_toTopOf="@id/guidelineHorizontal48"
+        android:clickable="true"
+        android:layout_margin="8dp"
+        app:srcCompat="@drawable/ic_clear" />
 
     <TextView
         android:id="@+id/txtViewName"
@@ -97,7 +118,6 @@
         app:layout_constraintEnd_toEndOf="@id/TxtName"
         android:enabled="false"
         android:inputType="text"
-        android:maxLength="12"
         android:textSize="14sp"
         />
 
@@ -173,9 +193,7 @@
             android:layout_marginEnd="8dp"
             android:text="Add"
             android:textSize="16sp"
-            android:background="@color/colorDarkGreal"
-
-            />
+            android:background="@color/colorDarkGreal"/>
 
         <Button
             android:id="@+id/btnClear"

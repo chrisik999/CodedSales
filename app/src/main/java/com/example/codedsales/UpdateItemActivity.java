@@ -1,16 +1,28 @@
 package com.example.codedsales;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.SparseArray;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.codedsales.models.Item;
 import com.example.codedsales.models.User;
+import com.google.android.gms.vision.CameraSource;
+import com.google.android.gms.vision.Detector;
+import com.google.android.gms.vision.barcode.Barcode;
+import com.google.android.gms.vision.barcode.BarcodeDetector;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -25,6 +37,16 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class UpdateItemActivity extends AppCompatActivity {
+
+    SurfaceView surfaceView;
+    TextView txtBarcodeValue;
+    private BarcodeDetector barcodeDetector;
+    private CameraSource cameraSource;
+    private static final int REQUEST_CAMERA_PERMISSION = 201;
+    String intentData = "";
+    FloatingActionButton fab;
+    String [] userData;
+
     OkHttpClient client;
     JSONObject jo;
     Context context;
@@ -37,7 +59,7 @@ public class UpdateItemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_update_item);
         context = this;
         Bundle data = getIntent().getExtras();
-        String [] userData = data.getStringArray("user");
+        userData = data.getStringArray("user");
 
         txtName = findViewById(R.id.TxtName);
         txtCode = findViewById(R.id.TxtItemCode);
@@ -46,8 +68,9 @@ public class UpdateItemActivity extends AppCompatActivity {
         btnUpdate = findViewById(R.id.btnUpdate);
         btnClear = findViewById(R.id.btnClear);
 
-        String [] qv ={"76853212", userData[2]};
-        getAPIObject("getitem",qv);
+        txtBarcodeValue = findViewById(R.id.txtBarcodeValue);
+        surfaceView = findViewById(R.id.surfaceView);
+        fab = findViewById(R.id.fab);
 
         btnUpdate.setOnClickListener(view -> {
             Log.i("loggy", "btnUpdate called");
@@ -56,12 +79,70 @@ public class UpdateItemActivity extends AppCompatActivity {
             String desc = txtDesc.getText().toString().trim();
             String price = txtPrice.getText().toString().trim();
             String [] pv = {code, name, price, userData[2], desc , userData[1]};
+            Log.i("Loggy",pv[0]);
             getAPIObject("updateitem", pv);
         });
 
         btnClear.setOnClickListener(view -> {
             Log.i("loggy", "Clear called");
             clearText();
+        });
+
+        fab.setOnClickListener(view -> {
+            clear();
+        });
+    }
+
+    private void initialiseDetectorsAndSources() {
+
+        barcodeDetector = new BarcodeDetector.Builder(this)
+                .setBarcodeFormats(Barcode.ALL_FORMATS)
+                .build();
+        cameraSource = new CameraSource.Builder(this, barcodeDetector)
+                .setRequestedPreviewSize(1920, 1080)
+                .setAutoFocusEnabled(true) //you should add this feature
+                .build();
+        surfaceView.getHolder().addCallback(new SurfaceHolder.Callback() {
+            @Override
+            public void surfaceCreated(SurfaceHolder holder) {
+                try {
+                    if (ActivityCompat.checkSelfPermission(UpdateItemActivity.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                        cameraSource.start(surfaceView.getHolder());
+                    } else {
+                        ActivityCompat.requestPermissions(UpdateItemActivity.this, new
+                                String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            @Override
+            public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+
+            }
+            @Override
+            public void surfaceDestroyed(SurfaceHolder holder) {
+                cameraSource.stop();
+            }
+        });
+        barcodeDetector.setProcessor(new Detector.Processor<Barcode>() {
+            @Override
+            public void release() {}
+            @Override
+            public void receiveDetections(Detector.Detections<Barcode> detections) {
+                final SparseArray<Barcode> barCodes = detections.getDetectedItems();
+                if (barCodes.size()!=0) {
+                    txtCode.post(() -> {
+                        intentData = barCodes.valueAt(0).displayValue;
+                        cameraSource.stop();
+                        if(intentData.length()==12)intentData = "0"+intentData;
+                        txtBarcodeValue.setText("Code Captured");
+                    });
+                    Log.i("Logg",intentData);
+                    String [] qv ={intentData, userData[2]};
+                    getAPIObject("getitem",qv);
+                }
+            }
         });
     }
 
@@ -99,6 +180,7 @@ public class UpdateItemActivity extends AppCompatActivity {
                                     msg = jo.getString("msg");
                                     Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
                                     clearText();
+                                    clear();
                                     break;
                                 default:
                                     Toast.makeText(context, "Moku!!! Oh!!!!", Toast.LENGTH_SHORT).show();
@@ -112,6 +194,7 @@ public class UpdateItemActivity extends AppCompatActivity {
                                     Gson gson = new Gson();
                                     String us = jo.getString("item");
                                     Item item = gson.fromJson(us, Item.class);
+                                    Log.i("Loggy", item.toString());
                                     txtName.setText(item.getName());
                                     txtCode.setText(item.getCode());
                                     txtDesc.setText(item.getDescription());
@@ -161,5 +244,30 @@ public class UpdateItemActivity extends AppCompatActivity {
         txtDesc.setText("");
     }
 
+    void clear(){
+        try {
+            if (ActivityCompat.checkSelfPermission(UpdateItemActivity.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                cameraSource.start(surfaceView.getHolder());
+            } else {
+                ActivityCompat.requestPermissions(UpdateItemActivity.this, new
+                        String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION);
+            }
+            txtBarcodeValue.setText("No BarCode Detected");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        cameraSource.release();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initialiseDetectorsAndSources();
+    }
 
 }

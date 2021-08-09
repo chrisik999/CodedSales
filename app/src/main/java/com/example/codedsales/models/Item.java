@@ -135,9 +135,20 @@ public class Item implements Serializable {
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="To String Method">
+
     @Override
     public String toString() {
-        return "Item{" + "id=" + id + ", name=" + name + ", price=" + price + ", business=" + business + '}';
+        return "Item{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", code='" + code + '\'' +
+                ", price=" + price +
+                ", description='" + description + '\'' +
+                ", business='" + business + '\'' +
+                ", quantity=" + quantity +
+                ", amount=" + amount +
+                '}';
     }
+
     //</editor-fold>
 }
