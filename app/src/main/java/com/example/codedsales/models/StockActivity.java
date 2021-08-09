@@ -1,7 +1,7 @@
 package com.example.codedsales.models;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 public class StockActivity implements Serializable {
 
