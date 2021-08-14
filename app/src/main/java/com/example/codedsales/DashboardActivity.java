@@ -20,7 +20,7 @@ public class DashboardActivity extends AppCompatActivity {
     CardView historyCard;
     CardView profileCard;
     CardView settingsCard;
-    CardView exitCard;
+    CardView salesHistoryCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class DashboardActivity extends AppCompatActivity {
 
         historyCard = findViewById(R.id.historyCard);
         historyCard.setOnClickListener(view -> {
-            intent = new Intent(DashboardActivity.this, SalesHistoryActivity.class);
+            intent = new Intent(DashboardActivity.this, ActivitiesHistoryActivity.class);
             intent.putExtra("user",  userData);
             startActivity(intent);
         });
@@ -68,9 +68,11 @@ public class DashboardActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        exitCard = findViewById(R.id.exitCard);
-        exitCard.setOnClickListener(view -> {
-
+        salesHistoryCard = findViewById(R.id.saleHistoryCard);
+        salesHistoryCard.setOnClickListener(view -> {
+            intent = new Intent(DashboardActivity.this, ViewSalesActivity.class);
+            intent.putExtra("user",  userData);
+            startActivity(intent);
         });
 
     }

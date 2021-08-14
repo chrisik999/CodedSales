@@ -20,6 +20,7 @@ public class Item implements Serializable {
     private Double quantity;
 
     private Double amount;
+
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Constructors">
@@ -34,6 +35,13 @@ public class Item implements Serializable {
 
     //Empty Constructor
     public Item() {
+        this.name="";
+        this.code ="";
+        this.price = 0D;
+        this.description="";
+        this.business="";
+        this.quantity = 0D;
+        this.amount= 0D;
     }
 
     //
@@ -121,7 +129,7 @@ public class Item implements Serializable {
     }
 
     public void setAmount(Double amount) {
-        this.amount = getQuantity() * getPrice();
+        this.amount = amount;
     }
 
     public String getDescription() {
@@ -146,7 +154,7 @@ public class Item implements Serializable {
                 ", description='" + description + '\'' +
                 ", business='" + business + '\'' +
                 ", quantity=" + quantity +
-                ", amount=" + amount +
+                ", amount=" + getAmount() +
                 '}';
     }
 

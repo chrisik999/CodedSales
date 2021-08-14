@@ -115,7 +115,7 @@
         app:layout_constraintStart_toStartOf="@id/layoutLinear"
         android:text="@string/haveaccount"/>
     <TextView
-        android:id="@+id/txtRegisterSignin"
+        android:id="@+id/txtSignin"
         style="@style/txtSignAnswer"
         app:layout_constraintTop_toTopOf="@+id/txtAccount"
         app:layout_constraintStart_toEndOf="@+id/txtAccount"

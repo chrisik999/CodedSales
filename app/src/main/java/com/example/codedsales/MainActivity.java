@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         txtPhone = findViewById(R.id.txtLoginPhone);
         txtPass = findViewById(R.id.txtLoginPassword);
         Button btnLogin =  findViewById(R.id.btnSignin);
-        TextView txtRegister = findViewById(R.id.txtLoginRegister);
+        TextView txtRegister = findViewById(R.id.txtRegister);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,13 +55,13 @@ public class MainActivity extends AppCompatActivity {
                 String checkRes = checkInputs(phone, password);
                 switch(checkRes){
                     case "empty":
-                        Toast.makeText(context,"", Toast.LENGTH_SHORT);
+                        Toast.makeText(context,"Fields can't be empty", Toast.LENGTH_SHORT).show();
                         break;
                     case "not phone":
-                        Toast.makeText(context,"", Toast.LENGTH_SHORT);
+                        Toast.makeText(context,"Please enter a valid phone number", Toast.LENGTH_SHORT).show();
                         break;
                     case "short password":
-                        Toast.makeText(context,"", Toast.LENGTH_SHORT);
+                        Toast.makeText(context,"Password length can't be less than 4", Toast.LENGTH_SHORT).show();
                         break;
                     case "valid":
                         String pv[] = new String[2];
@@ -70,10 +70,15 @@ public class MainActivity extends AppCompatActivity {
                         getAPIObject("login",pv);
                         break;
                     default:
-                        Toast.makeText(context,"", Toast.LENGTH_SHORT);
+                        Toast.makeText(context,"Moku!! oh!!!", Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
+        });
+
+        txtRegister.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
+            startActivity(intent);
         });
 
     }
@@ -85,12 +90,15 @@ public class MainActivity extends AppCompatActivity {
         if(phone.isEmpty() || password.isEmpty()){
             msg = "empty";
         }//check the length of both fields
+        else if(password.length() < 4){
+            msg = "short password";
+        }
         else if(phone.length() != 11){
             msg = "not phone";
         }
-        else if(password.length() < 6){
-            msg = "short password";
-        }
+//        else if(!phone.startsWith("080") || !phone.startsWith("081") || !phone.startsWith("070") || !phone.startsWith("090") || !phone.startsWith("091")) {
+//            msg = "not phone";
+//        }
         else{
             msg = "valid";
         }
@@ -138,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
                                     data[2] = user.getBusiness();
                                     intent.putExtra("user", data);
                                     clearText();
+                                    Toast.makeText(context, "Successful", Toast.LENGTH_SHORT).show();
                                     startActivity(intent);
                                     break;
                                 case "false":

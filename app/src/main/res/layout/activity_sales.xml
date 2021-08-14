@@ -6,15 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".SalesActivity">
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             >
-
             <RelativeLayout
                 android:id="@+id/headerLayout"
                 android:layout_width="match_parent"
@@ -50,6 +51,7 @@
                     style="@style/reportContentText" />
 
                 <TextView
+                    android:id="@+id/txtTodaySales"
                     style="@style/viewParent.headerText"
                     android:layout_centerHorizontal="true"
                     android:textColor="@color/whiteTextColor"
@@ -67,9 +69,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/headerLayout"
-                android:layout_marginTop="-80dp">
+                android:layout_marginTop="-80dp"
+                android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cardMonth"
                     app:cardCornerRadius="16dp"
                     app:cardBackgroundColor="@color/whiteTextColor"
                     style="@style/reportsCardStyle">
@@ -94,6 +98,7 @@
 
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cardWeek"
                     app:cardCornerRadius="16dp"
                     app:cardBackgroundColor="@color/whiteTextColor"
                     style="@style/reportsCardStyle">
@@ -119,11 +124,16 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_below="@id/cardLayout"
+                android:layout_margin="8dp"
                 android:orientation="vertical">
 
-                <include layout="@layout/card_sales"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
 
 
             </LinearLayout>
@@ -131,6 +141,4 @@
 
         </RelativeLayout>
 
-
-    </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

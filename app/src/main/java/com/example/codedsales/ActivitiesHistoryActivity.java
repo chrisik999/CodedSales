@@ -21,11 +21,13 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class SalesHistoryActivity extends AppCompatActivity {
+public class ActivitiesHistoryActivity extends AppCompatActivity {
 
     OkHttpClient client;
     JSONObject jo;
@@ -39,26 +41,29 @@ public class SalesHistoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sales_history);
+        context = this;
 
         Bundle data = getIntent().getExtras();
         userData = data.getStringArray("user");
 
         recyclerView = findViewById(R.id.recyclerview);
 
-        getAPIObject("stockactivity");
+        //getAPIObject("stockactivity");
+        String [] qv = {userData[1], userData[2]};
+        getAPIObject("itemaudit", qv);
 
     }
 
     //<editor-fold defaultstate= "collapsed" desc= "Get Api Object">
-    public void getAPIObject(String endpoint) {
+    public void getAPIObject(String endpoint, String ... pv) {
         Log.i("loggy", "getApi called");
         client = new OkHttpClient();
-//        FormBody.Builder newBody = new FormBody.Builder();
-//        for(int i=0;i<pv.length;i++){
-//            newBody.add("p"+i, pv[i]);
-//        }
-//        RequestBody formBody = newBody.build();
-        Request request = newAPIRequest(endpoint);
+        FormBody.Builder newBody = new FormBody.Builder();
+        for(int i=0;i<pv.length;i++){
+            newBody.add("p"+i, pv[i]);
+        }
+        RequestBody formBody = newBody.build();
+        Request request = newAPIRequest(endpoint, formBody);
         Thread thread = new Thread(() -> {
             try (Response response = client.newCall(request).execute()) {
                 if (!response.isSuccessful()) {
@@ -71,7 +76,7 @@ public class SalesHistoryActivity extends AppCompatActivity {
                 runOnUiThread(() -> {
                     try {
                         jo = new JSONObject(rs);
-                        if(endpoint.equals("stockactivity")){
+                        if(endpoint.equals("itemaudit")){
                             String msg;
                             String type = jo.getString("type");
                             switch (type.toLowerCase()){
@@ -112,12 +117,12 @@ public class SalesHistoryActivity extends AppCompatActivity {
     //</editor-fold>
 
     //<editor-fold defaultstate= "collapsed" desc= "Api Connection">
-    public static Request newAPIRequest( String endpoint){
+    public static Request newAPIRequest( String endpoint, RequestBody formBody){
         Log.i("loggy", "newAPIRequest Called");
         String fullPath = "http://8.208.96.127:8080/CodeSales/shop/"+endpoint;
         Request request = new Request.Builder()
                 .url(fullPath)
-                .get()
+                .post(formBody)
                 .build();
         return request;
     }

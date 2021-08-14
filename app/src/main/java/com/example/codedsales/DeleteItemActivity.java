@@ -153,7 +153,7 @@ public class DeleteItemActivity extends AppCompatActivity {
         });
     }
 
-    //<editor-fold defaultstate= "collapsed" desc= "Get Api Object">
+    //<editor-fold defaultstate="collapsed" desc="Get Api Object">
     public void getAPIObject(String endpoint, String ... pv) {
         Log.i("loggy", "getAPIObject called");
         client = new OkHttpClient();

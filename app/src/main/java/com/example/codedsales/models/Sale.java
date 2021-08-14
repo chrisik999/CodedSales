@@ -1,6 +1,7 @@
 package com.example.codedsales.models;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 public class Sale implements Serializable {
 
@@ -22,6 +23,8 @@ public class Sale implements Serializable {
     private String description;
 
     private String code;
+
+    private Timestamp date;
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Constructors">
@@ -38,7 +41,9 @@ public class Sale implements Serializable {
     }
 
     //Sales details from database constructor
-    public Sale(Long id, Double total, String items, String business, String initiator, int discount, Double amount, String description, String code) {
+
+
+    public Sale(Long id, Double total, String items, String business, String initiator, int discount, Double amount, String description, String code, Timestamp date) {
         this.id = id;
         this.total = total;
         this.items = items;
@@ -48,6 +53,7 @@ public class Sale implements Serializable {
         this.amount = amount;
         this.description = description;
         this.code = code;
+        this.date = date;
     }
 
     //Find Sale by id constructor
@@ -133,12 +139,31 @@ public class Sale implements Serializable {
     public void setCode(String code) {
         this.code = code;
     }
+
+    public Timestamp getDate() {
+        return date;
+    }
+
+    public void setDate(Timestamp date) {
+        this.date = date;
+    }
+
     //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="To String">
     @Override
     public String toString() {
-        return "Sale{" + "id=" + id + ", total=" + total + ", items=" + items + ", business=" + business + ", initiator=" + initiator + ", discount=" + discount + ", amount=" + amount + ", description=" + description + ", code=" + code + '}';
+        return "Sale{" +
+                "id=" + id +
+                ", total=" + total +
+                ", items='" + items + '\'' +
+                ", business='" + business + '\'' +
+                ", initiator='" + initiator + '\'' +
+                ", discount=" + discount +
+                ", amount=" + amount +
+                ", description='" + description + '\'' +
+                ", code='" + code + '\'' +
+                ", date=" + date +
+                '}';
     }
     //</editor-fold>
 

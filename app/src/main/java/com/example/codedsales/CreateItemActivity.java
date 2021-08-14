@@ -123,18 +123,7 @@ public class CreateItemActivity extends AppCompatActivity {
         });
 
         fab.setOnClickListener(view -> {
-            try {
-                if (ActivityCompat.checkSelfPermission(CreateItemActivity.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-                    cameraSource.start(surfaceView.getHolder());
-                } else {
-                    ActivityCompat.requestPermissions(CreateItemActivity.this, new
-                            String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION);
-                }
-                txtBarcodeValue.setText("No BarCode Detected");
-                txtCode.setText("");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            clean();
         });
 
     }
@@ -185,10 +174,8 @@ public class CreateItemActivity extends AppCompatActivity {
                         cameraSource.stop();
                         if(intentData.length()==12)intentData = "0"+intentData;
                         txtBarcodeValue.setText("Code Captured");
+                        txtCode.setText(intentData);
                     });
-                    qv[0] = intentData;
-                    qv[1] = userData[2];
-                    getAPIObject("getitem",qv);
                 }
             }
         });
@@ -248,26 +235,7 @@ public class CreateItemActivity extends AppCompatActivity {
                                 case "failed":
                                     msg = jo.getString("msg");
                                     clearText();
-                                    Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
-                                    break;
-                                default:
-                                    Toast.makeText(context, "Moku!!! Oh!!!!", Toast.LENGTH_SHORT).show();
-                                    break;
-                            }
-                        }else if(endpoint.equals("getitem")){
-                            String msg;
-                            String type = jo.getString("type");
-                            switch (type.toLowerCase()){
-                                case "success":
-                                    txtCode.setText("");
-                                    Toast.makeText(context, "Item already exist", Toast.LENGTH_SHORT).show();
-                                    break;
-                                case "false":
-                                    txtCode.setText(intentData);
-                                    break;
-                                case "failed":
-                                case "failure":
-                                    msg = jo.getString("msg");
+                                    clean();
                                     Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
                                     break;
                                 default:
@@ -318,6 +286,21 @@ public class CreateItemActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         initialiseDetectorsAndSources();
+    }
+
+    void clean(){
+        try {
+            if (ActivityCompat.checkSelfPermission(CreateItemActivity.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                cameraSource.start(surfaceView.getHolder());
+            } else {
+                ActivityCompat.requestPermissions(CreateItemActivity.this, new
+                        String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION);
+            }
+            txtBarcodeValue.setText("No BarCode Detected");
+            txtCode.setText("");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

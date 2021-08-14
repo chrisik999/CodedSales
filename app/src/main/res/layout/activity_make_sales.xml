@@ -4,31 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="8dp"
     tools:context=".MakeSalesActivity">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/headerLayout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                android:background="@drawable/reports_header_bk">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/reports_header_bk"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
-                    android:id="@+id/imageView6"
-                    android:layout_width="0dp"
-                    android:layout_height="200dp"
-                    app:layout_constraintStart_toStartOf="@id/headerLayout"
-                    app:layout_constraintEnd_toEndOf="@id/headerLayout"
-                    app:layout_constraintTop_toTopOf="@+id/headerLayout"
-                    app:layout_constraintBottom_toBottomOf="@id/headerLayout"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintVertical_bias="0.5"
-                    tools:srcCompat="@drawable/ic_spreadsheets_amico" />
+        <SurfaceView
+            android:id="@+id/surfaceView"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            app:layout_constraintBottom_toBottomOf="@id/headerLayout"
+            app:layout_constraintEnd_toEndOf="@id/headerLayout"
+            app:layout_constraintStart_toStartOf="@id/headerLayout"
+            app:layout_constraintTop_toTopOf="@+id/headerLayout"
+            app:layout_constraintVertical_bias="0.5" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/headerLayout"
+            app:layout_constraintBottom_toBottomOf="@id/headerLayout"
+            android:clickable="true"
+            android:layout_margin="8dp"
+            app:srcCompat="@drawable/ic_clear" />
+
+        <TextView
+            android:id="@+id/txtBarcodeValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="No BarCode Detected"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/headerLayout"
+            app:layout_constraintTop_toTopOf="@+id/headerLayout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
                 android:id="@+id/linear_sales_layout"
@@ -40,58 +60,174 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 android:layout_marginTop="8dp"
                 >
-                <include layout="@layout/card_main_sales" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:id="@+id/LinearCard"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/LinearCard2"
+                        android:orientation="vertical">
+                        >
+                            <TextView
+                                android:id="@+id/txtItemName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/name_of_item"
+                                android:textAlignment="center"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="4dp"
+                                android:orientation="horizontal">
+                                <EditText
+                                    android:id="@+id/txtCode"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="Code"
+                                    android:enabled="false"
+                                    android:textAlignment="center"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+                                <Button
+                                    android:id="@+id/btnFetch"
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:text="D"
+                                    android:layout_marginStart="12dp"
+                                    android:background="@color/colorDarkGreal"
+                                    android:textAllCaps="false"
+                                    android:src="@drawable/ic_twotone_arrow_downward_24"
+                                    />
+                            </LinearLayout>
+                            <TextView
+                                android:id="@+id/txtPrice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="@string/salesamount"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/LinearCard2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        app:layout_constraintTop_toTopOf="@+id/LinearCard"
+                        app:layout_constraintBottom_toBottomOf="@+id/LinearCard"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        >
+                        <Button
+                            android:id="@+id/btnAdd"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAllCaps="false"
+                            android:layout_weight="1"
+                            android:text="@string/addItem"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:id="@+id/btnRemove"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAllCaps="false"
+                            android:layout_weight="1"
+                            android:text="@string/removeItem"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/linear_sales_layout_1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="6dp"
+        app:layout_constraintTop_toBottomOf="@+id/linear_sales_layout"
+        app:layout_constraintStart_toStartOf="@+id/linear_sales_layout"
+        app:layout_constraintEnd_toEndOf="@+id/linear_sales_layout"
+        app:layout_constraintBottom_toTopOf="@+id/payment"
+        app:layout_constraintHorizontal_bias="0.5"
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
             <LinearLayout
+                android:id="@+id/payment"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ScrollLayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:orientation="vertical">
-                <include layout="@layout/card_pay_button" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Total:"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:id="@+id/txtTotalSales"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="Amount"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+                    <Button
+                        android:id="@+id/btnPay"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorDarkGreal"
+                        android:text="@string/btnPay"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+                    <Button
+                        android:id="@+id/btnClear"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="4dp"
+                        android:background="@color/colorRed"
+                        android:text="@string/btnClear"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
             </LinearLayout>
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/ScrollLayout"
-        android:layout_width="0dp"
-        android:layout_height="360dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linear_sales_layout">
 
-        <LinearLayout
-            android:id="@+id/linear_sales_layout_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="vertical">
 
-            <include layout="@layout/card_sales" />
 
-            <include layout="@layout/card_sales" />
-
-            <include layout="@layout/card_sales" />
-
-            <include layout="@layout/card_sales" />
-
-            <include layout="@layout/card_sales" />
-
-            <include layout="@layout/card_sales" />
-
-            <include layout="@layout/card_sales" />
-
-            <include layout="@layout/card_sales" />
-
-            <include layout="@layout/card_sales" />
-        </LinearLayout>
-
-    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

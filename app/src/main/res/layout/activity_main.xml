@@ -66,7 +66,7 @@
         />
     <TextView
         style="@style/txtSignAnswer"
-        android:id="@+id/txtLoginRegister"
+        android:id="@+id/txtRegister"
         app:layout_constraintTop_toTopOf="@id/txtNoAccount"
         app:layout_constraintBottom_toBottomOf="@id/txtNoAccount"
         app:layout_constraintStart_toEndOf="@+id/txtNoAccount"

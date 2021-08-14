@@ -3,6 +3,8 @@ package com.example.codedsales;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +36,19 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         context = this;
+
+        Button btnSignup = findViewById(R.id.btnSignup);
+        btnSignup.setOnClickListener(view -> {
+            Toast.makeText(context, "User created successfully", Toast.LENGTH_SHORT);
+            Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+            startActivity(intent);
+        });
+
+        TextView login = findViewById(R.id.txtSignin);
+        login.setOnClickListener(view -> {
+            Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+            startActivity(intent);
+        });
 
     }
 
